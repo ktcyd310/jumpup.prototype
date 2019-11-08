@@ -1,0 +1,207 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <script>
+    window.onload = function () {
+
+      var chart = new CanvasJS.Chart("chartContainer", {
+        animationEnabled: true,
+        title:{
+          text: "주간 소모 칼로리"
+        },
+        axisX: {
+          valueFormatString: "DD MMM,YY"
+        },
+        axisY: {
+          title: "소모 칼로리(kcal)",
+          includeZero: false,
+          suffix: " kcal"
+        },
+        legend:{
+          cursor: "pointer",
+          fontSize: 16,
+          itemclick: toggleDataSeries
+        },
+        toolTip:{
+          shared: true
+        },
+        data: [{
+          name: "나의 소모 칼로리",
+          type: "spline",
+          yValueFormatString: "#0.## kcal",
+          showInLegend: true,
+          dataPoints: [
+            { x: new Date(2019,11,1), y: 800 },
+            { x: new Date(2019,11,2), y: 710 },
+            { x: new Date(2019,11,3), y: 920 },
+            { x: new Date(2019,11,4), y: 1030 },
+            { x: new Date(2019,11,5), y: 1210 },
+            { x: new Date(2019,11,6), y: 720 },
+            { x: new Date(2019,11,7), y: 830 }
+          ]
+        },
+          {
+            name: "30세 평균 소모 칼로리",
+            type: "spline",
+            yValueFormatString: "#0.## kcal",
+            showInLegend: true,
+            dataPoints: [
+              { x: new Date(2019,11,1), y: 810 },
+              { x: new Date(2019,11,2), y: 1080 },
+              { x: new Date(2019,11,3), y: 990 },
+              { x: new Date(2019,11,4), y: 650 },
+              { x: new Date(2019,11,5), y: 450 },
+              { x: new Date(2019,11,6), y: 830 },
+              { x: new Date(2019,11,7), y: 920 }
+            ]
+          },
+          {
+            name: "전체 평균 소모 칼로리",
+            type: "spline",
+            yValueFormatString: "#0.## kcal",
+            showInLegend: true,
+            dataPoints: [
+              { x: new Date(2019,11,1), y: 810 },
+              { x: new Date(2019,11,2), y: 840 },
+              { x: new Date(2019,11,3), y: 790 },
+              { x: new Date(2019,11,4), y: 910 },
+              { x: new Date(2019,11,5), y: 690 },
+              { x: new Date(2019,11,6), y: 910 },
+              { x: new Date(2019,11,7), y: 870 }
+            ]
+          }]
+      });
+      chart.render();
+
+      function toggleDataSeries(e){
+        if (typeof(e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+          e.dataSeries.visible = false;
+        }
+        else{
+          e.dataSeries.visible = true;
+        }
+        chart.render();
+      }
+
+      var chart1 = new CanvasJS.Chart("chartContainer1", {
+        theme: "light2", // "light1", "light2", "dark1", "dark2"
+        exportEnabled: true,
+        animationEnabled: true,
+        title: {
+          text: "체지방 분석 결과"
+        },
+        data: [{
+          type: "pie",
+          startAngle: 25,
+          toolTipContent: "<b>{label}</b>: {y}%",
+          showInLegend: "true",
+          legendText: "{label}",
+          indexLabelFontSize: 16,
+          indexLabel: "{label} - {y}%",
+          dataPoints: [
+            { y: 51.08, label: "수분" },
+            { y: 27.34, label: "지방" },
+            { y: 10.62, label: "근골격" },
+            { y: 5.02, label: "단백질" },
+            { y: 4.07, label: "칼슘" },
+            { y: 1.22, label: "칼륨" },
+            { y: 0.44, label: "기타" }
+          ]
+        }]
+      });
+      chart1.render()
+
+      var chart2 = new CanvasJS.Chart("chartContainer2", {
+          animationEnabled: true,
+          exportEnabled: true,
+          theme: "light1", // "light1", "light2", "dark1", "dark2"
+          title:{
+            text: "친구와 운동량 비교"
+          },
+          data: [{
+            type: "column", //change type to bar, line, area, pie, etc
+            //indexLabel: "{y}", //Shows y value on all Data Points
+            indexLabelFontColor: "#5A5757",
+            indexLabelPlacement: "outside",
+            dataPoints: [
+              { label: "나", y: 71 },
+              { label: "원유진", y: 71 },
+              { label: "김승민", y: 55 },
+              { label: "김동현", y: 50 },
+              { label: "이현지", y: 92, indexLabel: "Hightest" },
+              { label: "이수민", y: 68 },
+              { label: "김효주", y: 38 },
+              { label: "최준구", y: 21, indexLabel: "Lowest" }
+            ]
+          }]
+        });
+        chart2.render();
+
+      }
+  </script>
+
+
+  <title>슼톤</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+
+</head>
+<body class="homepage is-preload">
+<div id="page-wrapper">
+
+  <!-- Header -->
+  <header id="header">
+    <div class="logo container">
+      <div>
+        <h1><a href="index.html" id="logo">운동량 분석</a></h1>
+        <p>BoostPark를 발라버리는 서비스</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- Nav -->
+  <nav id="nav">
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li>
+        <a href="#">강좌 목록</a>
+        <ul>
+          <li><a href="left-sidebar.html">Cycle</a></li>
+          <li><a href="left-sidebar1.html">Running</a></li>
+        </ul>
+      </li>
+      <li class="current"><a href="right-sidebar.html">강사 소개</a></li>
+      <li><a href="catalogue.html">주변 기기</a></li>
+      <li><a href="chart.html">운동량 분석</a></li>
+
+    </ul>
+  </nav>
+
+  <section id="main">
+    <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+  </section>
+
+  <section id="main">
+    <div id="chartContainer1" style="height: 300px; width: 100%;"></div>
+  </section>
+
+  <section id="main">
+    <div id="chartContainer2" style="height: 300px; width: 100%;"></div>
+  </section>
+
+
+  <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.dropotron.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+</div>
+</body>
+</html>
