@@ -1392,7 +1392,7 @@
 				top: 0;
 				width: _size(navPanel);
 				z-index: _misc(z-index-base) + 2;
-				background-color: #353c37;
+				background-color: #0000CD;
 				@include vendor('background-image', ('url("images/overlay.png")', 'linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5))'));
 				background-repeat: repeat, no-repeat;
 				background-size: auto, 100% 100%;
