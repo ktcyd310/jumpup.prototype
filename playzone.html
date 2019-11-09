@@ -10,6 +10,43 @@
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
+
+		<script>
+			window.onload=function () {
+
+				function numberCounter(target_frame, target_number) {
+					this.count = 0; this.diff = 0;
+					this.target_count = parseInt(target_number);
+					this.target_frame = document.getElementById(target_frame);
+					this.timer = null;
+					this.counter();
+				};
+				numberCounter.prototype.counter = function() {
+					var self = this;
+					this.diff = this.target_count - this.count;
+
+					if(this.diff > 0) {
+						self.count += Math.ceil(this.diff / 10000000);
+					}
+
+					this.target_frame.innerHTML = this.count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+
+					if(this.count < this.target_count) {
+						this.timer = setTimeout(function() { self.counter(); }, 50);
+					} else {
+						clearTimeout(this.timer);
+					}
+				};
+
+
+				new numberCounter("counter1", 9999999);
+				new numberCounter("counter2", 9999999);
+				new numberCounter("counter3", 9999999);
+
+			}
+		</script>
+
+
 	</head>
 	<body class="homepage is-preload">
 		<div id="page-wrapper">
@@ -50,11 +87,44 @@
 			</div>
 			-->
 
+			<!--
 			<div class="video-container">
 				<video src="images/playzone1.mp4" controls="controls" width="100%" height="100%" muted autoplay loop>
 					브라우저가 비디오를 지원 안함
 				</video>
 			</div>
+			-->
+
+			<section id="main">
+				<div class="container">
+					<div class="row">
+						<div class="col-3 col-12-medium">
+						</div>
+						<div class="col-9 col-12-medium imp-medium">
+							<div class="content">
+
+								<!-- Content -->
+
+								<article class="box page-content">
+									<section>
+										<span class="image featured"><img src="images/playzone2.gif" alt="" /></span>
+										원유진 기록(Km) :
+										<p id="counter1"></p>
+										이현지 기록(Km) :
+										<p id="counter2"></p>
+										김동현 기록(Km) :
+										<p id="counter3"></p>
+
+									</section>
+
+								</article>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
 
 			<section id="main">
 				<div class="container">
@@ -69,20 +139,21 @@
 								<article class="box page-content">
 
 									<header>
-										<h2>Cycle Time With Peter</h2>
-										<p>매주 화요일 16:30</p>
+										<h2>Running Time With Kristen</h2>
+										<p>매주 월요일 16:30</p>
 										<ul class="meta">
-											<li class="icon fa-clock">다음강좌 : 19.11.15 16:30</li>
+											<li class="icon fa-clock">다음강좌 : 19.11.14 16:30</li>
 											<li class="icon fa-person-booth">정원 : 10,000명</a></li>
 										</ul>
 									</header>
 
 									<section>
-										<span class="image featured"><img src="images/pic08.jpg" alt="" /></span>
+										<span class="image featured"><img src="images/pic09.jpg" alt="" /></span>
 										<p>
-											가장 파워풀한 강사 Peter와 함꼐하는 사이클
+											가장 Energetic한 강사 Kristen와 함꼐하는 사이클
 										</p>
 									</section>
+
 
 								</article>
 

@@ -93,7 +93,7 @@ ul {
 }
 
 a {
-	color: #e95846;
+	color: #0000CD;
 	text-decoration: none;
 }
 
@@ -148,7 +148,7 @@ a {
 
 .pricing-title {
 	color: #FFF;
-	background: #e95846;
+	background-color: #0000CD;
 	padding: 20px 0;
 	font-size: 2em;
 	text-transform: uppercase;
@@ -164,7 +164,8 @@ a {
 }
 
 .pricing-table .price {
-	background: #403e3d;
+	background-color: #403e3d;
+	color: #FFF;
 	font-size: 3.4em;
 	font-weight: 700;
 	padding: 20px 0;
@@ -186,16 +187,6 @@ a {
 	font-size: 1.4em;
 	font-weight: 700;
 	padding: 12px 8px;
-}
-
-.table-list li:before {
-	content: "\f00c";
-	font-family: 'FontAwesome';
-	color: #3fab91;
-	display: inline-block;
-	position: relative;
-	right: 5px;
-	font-size: 16px;
 }
 
 .table-list li span {
